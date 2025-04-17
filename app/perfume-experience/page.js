@@ -75,7 +75,7 @@ export default function PerfumeExperience() {
 
         <p className="text-lg text-gray-700">
           Perfumes, like love, have the power to evoke emotions and create lasting memories. The
-          essence of your being reminds me of the finest fragrances — each note a reflection of the
+          essence of your being reminds me of the finest fragrances: each note a reflection of the
           qualities I admire most in you.
         </p>
 
