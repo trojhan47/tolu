@@ -163,7 +163,7 @@ export default function PerfumeExperience() {
         <div className="mt-6">
           {!hasInteracted && (
             <p className="text-sm text-gray-500 italic animate-pulse">
-              Click anywhere to start the music 🎵
+              Click anywhere to start the music🎵
             </p>
           )}
           <button
