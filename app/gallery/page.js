@@ -1,11 +1,11 @@
 'use client';
 
-import { useEffect, useRef, useState } from "react";
-import Image from "next/image";
-import { motion } from "framer-motion";
-import Modal from "@/components/Modal";
-import galleryImages from "@/data/galleryImages";
-import "@/app/globals.css";
+import { useEffect, useRef, useState } from 'react';
+import Image from 'next/image';
+import { motion } from 'framer-motion';
+import Modal from '@/components/Modal';
+import galleryImages from '@/data/galleryImages';
+import '@/app/globals.css';
 
 export default function Gallery() {
   const [selectedImg, setSelectedImg] = useState(null);
@@ -14,7 +14,7 @@ export default function Gallery() {
   const [hasInteracted, setHasInteracted] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
   const [showHint, setShowHint] = useState(true);
-const [uploadedImages, setUploadedImages] = useState([]);
+  const [uploadedImages, setUploadedImages] = useState([]);
 
   // Petal background generation
   useEffect(() => {
@@ -26,9 +26,10 @@ const [uploadedImages, setUploadedImages] = useState([]);
     const audio = audioRef.current;
     const enableAudio = () => {
       if (audio && !hasInteracted) {
-        audio.play()
+        audio
+          .play()
           .then(() => setIsPlaying(true))
-          .catch(() => console.log("Autoplay blocked. Will play on user interaction."));
+          .catch(() => console.log('Autoplay blocked. Will play on user interaction.'));
         setHasInteracted(true);
       }
     };
@@ -55,11 +56,11 @@ const [uploadedImages, setUploadedImages] = useState([]);
   // Hide hint after interaction
   useEffect(() => {
     const handleInteraction = () => setShowHint(false);
-    window.addEventListener("click", handleInteraction);
-    window.addEventListener("touchstart", handleInteraction);
+    window.addEventListener('click', handleInteraction);
+    window.addEventListener('touchstart', handleInteraction);
     return () => {
-      window.removeEventListener("click", handleInteraction);
-      window.removeEventListener("touchstart", handleInteraction);
+      window.removeEventListener('click', handleInteraction);
+      window.removeEventListener('touchstart', handleInteraction);
     };
   }, []);
 
@@ -72,7 +73,7 @@ const [uploadedImages, setUploadedImages] = useState([]);
       transition: {
         duration: 6,
         repeat: Infinity,
-        ease: "easeInOut",
+        ease: 'easeInOut',
       },
     },
   };
@@ -112,15 +113,14 @@ const [uploadedImages, setUploadedImages] = useState([]);
           <input
             type="file"
             accept="image/*"
-            onChange={(e) => {
+            onChange={e => {
               const file = e.target.files?.[0];
               if (file) {
                 const reader = new FileReader();
                 reader.onloadend = () => {
-                  setUploadedImages((prev) => [
+                  setUploadedImages(prev => [
                     ...prev,
-                    { src: String(reader.result), caption: "New Memory 💖" },
-
+                    { src: String(reader.result), caption: 'New Memory 💖' },
                   ]);
                 };
                 reader.readAsDataURL(file);
@@ -197,9 +197,7 @@ const [uploadedImages, setUploadedImages] = useState([]);
       </div>
 
       {/* Modal Preview */}
-      {selectedImg && (
-        <Modal image={selectedImg} onClose={() => setSelectedImg(null)} />
-      )}
+      {selectedImg && <Modal image={selectedImg} onClose={() => setSelectedImg(null)} />}
 
       {/* Music Hint */}
       {showHint && (
@@ -207,7 +205,7 @@ const [uploadedImages, setUploadedImages] = useState([]);
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 1, repeat: Infinity, repeatType: "reverse" }}
+          transition={{ duration: 1, repeat: Infinity, repeatType: 'reverse' }}
           className="fixed bottom-6 left-1/2 transform -translate-x-1/2 bg-rose-100 text-rose-800 px-4 py-2 rounded-full shadow-md text-sm z-50"
         >
           🎵 Click anywhere to begin the music...
